@@ -30,7 +30,9 @@ func HandleTelegramWebHook(w http.ResponseWriter, r *http.Request) {
 		log.Printf("error parsing update, %s", err.Error())
 		resp = "<BOT> Ahh! I can listen to texts only.. Sorry, "
 		sendTextToTelegramChat(update.Message.Chat.Id, resp, update.Message.Chat.FirstName)
-	} else if update.Message.Text[0] == '/' && len(update.Message.Text) > 0 {
+	} else if len(update.Message.Text) < 1 {
+
+	} else if update.Message.Text[0] == '/' {
 		if update.Message.Text[1:] == "start" {
 			resp = "Welcome! This is a safe place to chat with Random people Anonymously!" +
 				"\nCommands: \n/new to start a new chat\n/like to let the other person know that you like the chat\nKeep it Simple!"
@@ -73,7 +75,7 @@ func HandleTelegramWebHook(w http.ResponseWriter, r *http.Request) {
 				sendTextToTelegramChat(pair, resp, update.Message.Chat.FirstName)
 			}
 		}
-	} else if len(update.Message.Text) > 0 {
+	} else {
 		resp = update.Message.Text
 		pair := GetPair(update.Message.Chat.Id)
 		if pair == -1 {
