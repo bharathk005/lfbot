@@ -1,7 +1,7 @@
 package lfserve
 
 type Chat struct {
-	Id        int    `json:"id"`
+	Id        int64  `json:"id"`
 	FirstName string `json:"first_name"`
 }
 
@@ -11,7 +11,7 @@ type Message struct {
 }
 
 type Update struct {
-	UpdateId int     `json:"update_id"`
+	UpdateId int64   `json:"update_id"`
 	Message  Message `json:"message"`
 }
 
