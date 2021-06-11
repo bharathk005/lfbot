@@ -14,3 +14,8 @@ type Update struct {
 	UpdateId int     `json:"update_id"`
 	Message  Message `json:"message"`
 }
+
+type Command struct {
+	Command string `json:"command"`
+	Desc    string `json:"description"`
+}
