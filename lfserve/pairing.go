@@ -62,7 +62,7 @@ func NewPair(id int64) (int64, int64) {
 		} else {
 			m.Free.add(v)
 			m.Free.add(id)
-			return -1, -1
+			return -1, v
 		}
 	}
 
